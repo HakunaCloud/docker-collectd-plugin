@@ -233,7 +233,7 @@ def read_memory_stats(container, dimensions, stats, t):
     mem_stats = stats['memory_stats']
     log.info('Reading memory stats: {0}'.format(mem_stats))
 
-    values = [mem_stats['limit'], mem_stats['max_usage'], mem_stats['usage']]
+    values = [mem_stats['limit'], mem_stats['max_usage'], mem_stats['usage'], mem_stats['stats']['rss']]
     emit(container, dimensions, 'memory.usage', values, t=t)
 
     detailed = mem_stats.get('stats')
